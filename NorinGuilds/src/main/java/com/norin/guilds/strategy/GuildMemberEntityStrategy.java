@@ -10,7 +10,7 @@ public class GuildMemberEntityStrategy implements EntityStrategy<GuildMemberDTO,
     @Override
     public GuildMemberDTO encode(NorinGuildMember entity) {
         return new GuildMemberDTO(
-                entity.getUniqueId(),
+                entity.getUniqueId().toString(),
                 entity.getGuildId(),
                 entity.getPosition().getId()
         );

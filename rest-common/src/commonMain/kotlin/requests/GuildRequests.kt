@@ -12,7 +12,7 @@ data class GuildCreateRequest(
 
 @Serializable
 data class GuildUpdateRequest(
-    val name: String? = null,
-    val tag: String? = null,
-    val ownerId: String? = null
+    val name: String,
+    val tag: String,
+    val ownerId: String,
 )

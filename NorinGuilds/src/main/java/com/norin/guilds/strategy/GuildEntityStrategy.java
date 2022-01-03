@@ -21,7 +21,7 @@ public class GuildEntityStrategy implements EntityStrategy<GuildDTO, NorinGuild>
                 entity.getId(),
                 entity.getName(),
                 entity.getTag(),
-                entity.getOwner(),
+                entity.getOwner().toString(),
                 entity.getMembers().stream().map(memberStrategy::encode).collect(Collectors.toList())
         );
     }

@@ -10,6 +10,6 @@ data class AccountCreateRequest(
 
 @Serializable
 data class AccountUpdateRequest(
-    val cash: Int? = null,
-    val loginDate: Long? = null
+    val cash: Int,
+    val loginDate: Long
 )
