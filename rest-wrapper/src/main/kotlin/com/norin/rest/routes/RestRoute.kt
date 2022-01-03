@@ -5,7 +5,6 @@ import io.ktor.client.request.*
 import io.ktor.client.utils.*
 import io.ktor.http.*
 import kotlinx.coroutines.future.future
-import kotlin.runCatching
 import java.util.concurrent.CompletableFuture
 
 abstract class RestRoute(val wrapper: NorinRestWrapper) {

@@ -9,8 +9,8 @@ import io.ktor.application.*
 import io.ktor.config.*
 import io.ktor.http.*
 import io.ktor.locations.*
-import io.ktor.locations.post
 import io.ktor.locations.patch
+import io.ktor.locations.post
 import io.ktor.request.*
 import io.ktor.response.*
 import io.ktor.routing.*
