@@ -4,7 +4,6 @@ import com.norin.rest.common.requests.AccountCreateRequest
 import com.norin.rest.common.requests.AccountUpdateRequest
 import com.norin.rest.common.util.jvm.prettyUniqueId
 import com.norin.rest.server.database.entity.Account
-import com.norin.rest.server.database.entity.Guild
 import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
 import java.util.*
 

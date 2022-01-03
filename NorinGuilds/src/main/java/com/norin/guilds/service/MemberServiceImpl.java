@@ -8,7 +8,6 @@ import com.norin.rest.routes.MemberRoute;
 
 import java.util.List;
 import java.util.UUID;
-import java.util.concurrent.locks.ReentrantLock;
 import java.util.stream.Collectors;
 
 public class MemberServiceImpl implements MemberService {
@@ -22,14 +21,10 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public NorinGuildMember integrate(UUID uniqueId, int guildId) {
-        final ReentrantLock mutex = GuildServiceImpl.getGuildMutex(guildId);
-        mutex.lock();
-        final NorinGuildMember member = memberRoute.integrateMember(new MemberJoinGuildRequest(
+        return memberRoute.integrateMember(new MemberJoinGuildRequest(
                 uniqueId.toString(),
                 guildId
         )).thenApply(memberStrategy::decode).join();
-        mutex.unlock();
-        return member;
     }
 
     @Override
@@ -47,9 +42,6 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public void disintegrate(UUID uniqueId, int guildId) {
-        final ReentrantLock mutex = GuildServiceImpl.getGuildMutex(guildId);
-        mutex.lock();
         memberRoute.disintegrateMember(uniqueId.toString(), guildId);
-        mutex.unlock();
     }
 }

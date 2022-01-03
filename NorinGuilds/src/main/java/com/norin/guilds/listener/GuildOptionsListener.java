@@ -3,7 +3,6 @@ package com.norin.guilds.listener;
 import com.norin.core.NorinCore;
 import com.norin.core.service.AccountService;
 import com.norin.guilds.NorinGuilds;
-import com.norin.guilds.entity.NorinGuild;
 import com.norin.guilds.service.GuildService;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -25,7 +24,7 @@ public class GuildOptionsListener implements Listener {
         final GuildService guildService = plugin.getGuildService();
         // TODO: ugly, fix
         accountService.search(receiver.getUniqueId(), (receiverAccount) -> {
-            // Don't waste any more resources if receiver doesn't have a guild
+            // Don't waste any more resources if receiver doesn't have a guild to begin with
             if (receiverAccount.getGuild() == null) return;
             accountService.search(damager.getUniqueId(), (damagerAccount) -> {
                 if (!receiverAccount.getGuild().equals(damagerAccount.getGuild()))

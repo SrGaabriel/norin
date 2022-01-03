@@ -8,15 +8,11 @@ import com.norin.rest.common.requests.GuildCreateRequest;
 import com.norin.rest.common.requests.GuildUpdateRequest;
 import com.norin.rest.routes.GuildRoute;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Consumer;
 
 public class GuildServiceImpl implements GuildService {
     private final GuildRoute guildRoute;
     private final EntityStrategy<GuildDTO, NorinGuild> entityStrategy;
-    private static final Map<Integer, ReentrantLock> mutexes = new HashMap<>();
 
     public GuildServiceImpl(GuildRoute guildRoute, EntityStrategy<GuildDTO, NorinGuild> entityStrategy) {
         this.guildRoute = guildRoute;
@@ -59,13 +55,5 @@ public class GuildServiceImpl implements GuildService {
     @Override
     public void delete(int id) {
         guildRoute.deleteGuild(id);
-    }
-
-    @Deprecated
-    // TODO: Improve and move
-    protected static ReentrantLock getGuildMutex(int id) {
-        ReentrantLock mutex = mutexes.containsKey(id) ? mutexes.get(id) : new ReentrantLock();
-        if (!mutexes.containsKey(id)) mutexes.put(id, mutex);
-        return mutex;
     }
 }

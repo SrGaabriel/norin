@@ -2,9 +2,7 @@ package com.norin.guilds.strategy;
 
 import com.norin.core.strategy.EntityStrategy;
 import com.norin.guilds.entity.NorinGuild;
-import com.norin.guilds.entity.NorinGuildMember;
 import com.norin.rest.common.entity.GuildDTO;
-import com.norin.rest.common.entity.GuildMemberDTO;
 import com.norin.rest.common.util.jvm.UniqueIdKt;
 
 public class GuildEntityStrategy implements EntityStrategy<GuildDTO, NorinGuild> {

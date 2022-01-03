@@ -2,7 +2,6 @@ package com.norin.guilds.strategy;
 
 import com.norin.core.strategy.EntityStrategy;
 import com.norin.guilds.entity.NorinGuildMember;
-import com.norin.rest.common.GuildMemberPosition;
 import com.norin.rest.common.entity.GuildMemberDTO;
 import com.norin.rest.common.util.jvm.UniqueIdKt;
 
