@@ -7,22 +7,14 @@ import com.norin.rest.common.entity.GuildDTO;
 import com.norin.rest.common.entity.GuildMemberDTO;
 import com.norin.rest.common.util.jvm.UniqueIdKt;
 
-import java.util.stream.Collectors;
-
 public class GuildEntityStrategy implements EntityStrategy<GuildDTO, NorinGuild> {
-    private final EntityStrategy<GuildMemberDTO, NorinGuildMember> memberStrategy;
-    public GuildEntityStrategy(EntityStrategy<GuildMemberDTO, NorinGuildMember> memberStrategy) {
-        this.memberStrategy = memberStrategy;
-    }
-
     @Override
     public GuildDTO encode(NorinGuild entity) {
         return new GuildDTO(
                 entity.getId(),
                 entity.getName(),
                 entity.getTag(),
-                entity.getOwner().toString(),
-                entity.getMembers().stream().map(memberStrategy::encode).collect(Collectors.toList())
+                entity.getOwner().toString()
         );
     }
 
@@ -32,8 +24,7 @@ public class GuildEntityStrategy implements EntityStrategy<GuildDTO, NorinGuild>
                 dto.getId(),
                 dto.getName(),
                 dto.getTag(),
-                UniqueIdKt.getPrettyUUID(dto.getOwnerId()),
-                dto.getMembers().stream().map(memberStrategy::decode).collect(Collectors.toList())
+                UniqueIdKt.getPrettyUUID(dto.getOwnerId())
         );
     }
 }

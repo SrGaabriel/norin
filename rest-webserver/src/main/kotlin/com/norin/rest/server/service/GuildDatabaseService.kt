@@ -4,6 +4,7 @@ import com.norin.rest.common.requests.GuildCreateRequest
 import com.norin.rest.common.requests.GuildUpdateRequest
 import com.norin.rest.common.util.jvm.prettyUniqueId
 import com.norin.rest.server.database.entity.Guild
+import com.norin.rest.server.database.entity.GuildMember
 import com.norin.rest.server.database.entity.GuildTable
 import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
 
@@ -15,6 +16,11 @@ class GuildDatabaseService {
             name = request.name
             tag = request.tag
             owner = request.ownerId.prettyUniqueId
+        }.also {
+            GuildMember.new(request.ownerId.prettyUniqueId) {
+                guild = it
+                position = 3
+            }
         }
     }
 

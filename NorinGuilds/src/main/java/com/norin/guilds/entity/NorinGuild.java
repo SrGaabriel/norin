@@ -8,14 +8,12 @@ public class NorinGuild {
     private String name;
     private String tag;
     private UUID owner;
-    private final List<NorinGuildMember> members;
 
-    public NorinGuild(int id, String name, String tag, UUID owner, List<NorinGuildMember> members) {
+    public NorinGuild(int id, String name, String tag, UUID owner) {
         this.id = id;
         this.name = name;
         this.tag = tag;
         this.owner = owner;
-        this.members = members;
     }
 
     public int getId() {
@@ -44,9 +42,5 @@ public class NorinGuild {
 
     public void setOwner(UUID owner) {
         this.owner = owner;
-    }
-
-    public List<NorinGuildMember> getMembers() {
-        return members;
     }
 }

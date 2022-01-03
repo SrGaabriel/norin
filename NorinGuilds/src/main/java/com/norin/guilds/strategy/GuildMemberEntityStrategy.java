@@ -2,7 +2,7 @@ package com.norin.guilds.strategy;
 
 import com.norin.core.strategy.EntityStrategy;
 import com.norin.guilds.entity.NorinGuildMember;
-import com.norin.guilds.util.GuildMemberPosition;
+import com.norin.rest.common.GuildMemberPosition;
 import com.norin.rest.common.entity.GuildMemberDTO;
 import com.norin.rest.common.util.jvm.UniqueIdKt;
 
@@ -12,7 +12,7 @@ public class GuildMemberEntityStrategy implements EntityStrategy<GuildMemberDTO,
         return new GuildMemberDTO(
                 entity.getUniqueId().toString(),
                 entity.getGuildId(),
-                entity.getPosition().getId()
+                entity.getPosition()
         );
     }
 
@@ -21,7 +21,7 @@ public class GuildMemberEntityStrategy implements EntityStrategy<GuildMemberDTO,
         return new NorinGuildMember(
                 UniqueIdKt.getPrettyUUID(dto.getUniqueId()),
                 dto.getGuildId(),
-                GuildMemberPosition.fromId(dto.getPosition())
+                dto.getPosition()
         );
     }
 }

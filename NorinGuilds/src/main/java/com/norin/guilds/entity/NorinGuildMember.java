@@ -1,6 +1,6 @@
 package com.norin.guilds.entity;
 
-import com.norin.guilds.util.GuildMemberPosition;
+import com.norin.rest.common.GuildMemberPosition;
 
 import java.util.UUID;
 

@@ -1,5 +1,6 @@
 package com.norin.rest.server.database.entity
 
+import com.norin.rest.common.GuildMemberPosition
 import com.norin.rest.common.entity.GuildDTO
 import com.norin.rest.common.entity.GuildMemberDTO
 import org.jetbrains.exposed.dao.IntEntity
@@ -23,7 +24,7 @@ class Guild(id: EntityID<Int>): IntEntity(id) {
 class GuildMember(id: EntityID<UUID>): UUIDEntity(id) {
     companion object: UUIDEntityClass<GuildMember>(GuildMemberTable)
 
-    val guild by Guild referencedOn GuildMemberTable.guild
+    var guild by Guild referencedOn GuildMemberTable.guild
     var position by GuildMemberTable.position
 }
 
@@ -38,6 +39,7 @@ object GuildMemberTable: UUIDTable("members") {
     val position = integer("position")
 }
 
-fun Guild.mapToDto() = GuildDTO(id.value, name, tag, owner.toString(), members.map(GuildMember::mapToDto))
+fun Guild.mapToDto() = GuildDTO(id.value, name, tag, owner.toString())
 
-fun GuildMember.mapToDto() = GuildMemberDTO(id.value.toString(), guild.id.value, position)
+fun GuildMember.mapToDto() =
+    GuildMemberDTO(id.value.toString(), guild.id.value, GuildMemberPosition.fromId(position))
