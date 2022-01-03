@@ -38,6 +38,7 @@ class GuildDatabaseService {
             name = request.name
             tag = request.tag
             owner = request.ownerId.prettyUniqueId
+            friendlyFire = request.friendlyFire
         }; true
     }
 

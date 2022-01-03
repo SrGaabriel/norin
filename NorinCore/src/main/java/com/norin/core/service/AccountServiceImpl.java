@@ -47,6 +47,7 @@ public class AccountServiceImpl implements AccountService {
         mutex.lock();
         accountRoute.updateAccount(account.getUniqueId().toString(), new AccountUpdateRequest(
                 account.getCash(),
+                account.getGuild(),
                 account.getLoginDate().toEpochMilli()
         ));
         mutex.unlock();

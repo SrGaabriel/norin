@@ -4,13 +4,13 @@ import com.norin.rest.common.requests.AccountCreateRequest
 import com.norin.rest.common.requests.AccountUpdateRequest
 import com.norin.rest.common.util.jvm.prettyUniqueId
 import com.norin.rest.server.database.entity.Account
+import com.norin.rest.server.database.entity.Guild
 import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
 import java.util.*
 
 class AccountDatabaseService {
     suspend fun create(create: AccountCreateRequest): Account = newSuspendedTransaction {
         find(create.uniqueId.prettyUniqueId) ?: Account.new(create.uniqueId.prettyUniqueId) {
-            cash = 0
             loggedAt = System.currentTimeMillis()
             createdAt = System.currentTimeMillis()
         }
@@ -24,6 +24,7 @@ class AccountDatabaseService {
         val account = find(id) ?: return@newSuspendedTransaction false
         account.apply {
             cash = update.cash
+            guild = update.guildId
             loggedAt = update.loginDate
         }; true
     }

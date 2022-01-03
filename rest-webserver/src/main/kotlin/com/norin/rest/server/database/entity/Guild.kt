@@ -18,6 +18,7 @@ class Guild(id: EntityID<Int>): IntEntity(id) {
     var name by GuildTable.name
     var tag by GuildTable.tag
     var owner by GuildTable.owner
+    var friendlyFire by GuildTable.friendlyFire
     val members by GuildMember referrersOn GuildMemberTable.guild
 }
 
@@ -32,6 +33,7 @@ object GuildTable: IntIdTable("guilds") {
     val name = varchar("name", 12)
     val tag = varchar("tag", 3)
     val owner = uuid("owner_id")
+    val friendlyFire = bool("friendly_fire").default(false)
 }
 
 object GuildMemberTable: UUIDTable("members") {
@@ -39,7 +41,7 @@ object GuildMemberTable: UUIDTable("members") {
     val position = integer("position")
 }
 
-fun Guild.mapToDto() = GuildDTO(id.value, name, tag, owner.toString())
+fun Guild.mapToDto() = GuildDTO(id.value, name, tag, owner.toString(), friendlyFire)
 
 fun GuildMember.mapToDto() =
     GuildMemberDTO(id.value.toString(), guild.id.value, GuildMemberPosition.fromId(position))

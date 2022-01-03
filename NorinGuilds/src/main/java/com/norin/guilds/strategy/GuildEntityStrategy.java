@@ -14,7 +14,8 @@ public class GuildEntityStrategy implements EntityStrategy<GuildDTO, NorinGuild>
                 entity.getId(),
                 entity.getName(),
                 entity.getTag(),
-                entity.getOwner().toString()
+                entity.getOwner().toString(),
+                entity.isFriendlyFireAllowed()
         );
     }
 
@@ -24,7 +25,8 @@ public class GuildEntityStrategy implements EntityStrategy<GuildDTO, NorinGuild>
                 dto.getId(),
                 dto.getName(),
                 dto.getTag(),
-                UniqueIdKt.getPrettyUUID(dto.getOwnerId())
+                UniqueIdKt.getPrettyUUID(dto.getOwnerId()),
+                dto.getFriendlyFire()
         );
     }
 }

@@ -8,7 +8,8 @@ data class GuildDTO(
     val id: Int,
     val name: String,
     val tag: String,
-    @SerialName("owner_id") val ownerId: String
+    @SerialName("owner_id") val ownerId: String,
+    @SerialName("friendly_fire") val friendlyFire: Boolean
 )
 
 @Serializable

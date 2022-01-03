@@ -11,5 +11,6 @@ data class AccountCreateRequest(
 @Serializable
 data class AccountUpdateRequest(
     val cash: Int,
+    @SerialName("guild_id") val guildId: Int,
     val loginDate: Long
 )

@@ -12,6 +12,7 @@ public class AccountEntityStrategy implements EntityStrategy<AccountDTO, NorinAc
         return new AccountDTO(
                 entity.getUniqueId().toString(),
                 entity.getCash(),
+                entity.getGuild(),
                 entity.getLoginDate().toEpochMilli(),
                 entity.getCreationDate().toEpochMilli()
         );
@@ -22,6 +23,7 @@ public class AccountEntityStrategy implements EntityStrategy<AccountDTO, NorinAc
         return new NorinAccount(
                 UUID.fromString(dto.getUniqueId()),
                 dto.getCash(),
+                dto.getGuildId(),
                 Instant.ofEpochMilli(dto.getLoggedAt()),
                 Instant.ofEpochMilli(dto.getCreatedAt())
         );

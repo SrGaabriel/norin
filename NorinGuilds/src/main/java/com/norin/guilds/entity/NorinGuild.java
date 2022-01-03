@@ -8,12 +8,14 @@ public class NorinGuild {
     private String name;
     private String tag;
     private UUID owner;
+    private boolean friendlyFire;
 
-    public NorinGuild(int id, String name, String tag, UUID owner) {
+    public NorinGuild(int id, String name, String tag, UUID owner, boolean friendlyFire) {
         this.id = id;
         this.name = name;
         this.tag = tag;
         this.owner = owner;
+        this.friendlyFire = friendlyFire;
     }
 
     public int getId() {
@@ -42,5 +44,13 @@ public class NorinGuild {
 
     public void setOwner(UUID owner) {
         this.owner = owner;
+    }
+
+    public boolean isFriendlyFireAllowed() {
+        return friendlyFire;
+    }
+
+    public void setFriendlyFire(boolean friendlyFire) {
+        this.friendlyFire = friendlyFire;
     }
 }

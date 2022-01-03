@@ -6,6 +6,8 @@ import java.util.UUID;
 public class NorinAccount {
     private final UUID uniqueId;
     private int cash;
+    // Must be nullable, so we can't use primitive int here
+    private Integer guildId;
     private Instant loginDate;
     private final Instant creationDate;
 
@@ -14,9 +16,10 @@ public class NorinAccount {
         this.creationDate = creationDate;
     }
 
-    public NorinAccount(UUID uniqueId, int cash, Instant loginDate, Instant creationDate) {
+    public NorinAccount(UUID uniqueId, int cash, int guildId, Instant loginDate, Instant creationDate) {
         this.uniqueId = uniqueId;
         this.cash = cash;
+        this.guildId = guildId;
         this.loginDate = loginDate;
         this.creationDate = creationDate;
     }
@@ -33,6 +36,14 @@ public class NorinAccount {
         this.cash = cash;
     }
 
+    public Integer getGuild() {
+        return guildId;
+    }
+
+    public void setGuild(Integer guildId) {
+        this.guildId = guildId;
+    }
+
     public Instant getLoginDate() {
         return loginDate;
     }
@@ -43,10 +54,5 @@ public class NorinAccount {
 
     public Instant getCreationDate() {
         return creationDate;
-    }
-
-    @Override
-    public NorinAccount clone() {
-        return new NorinAccount(uniqueId, cash, loginDate, creationDate);
     }
 }

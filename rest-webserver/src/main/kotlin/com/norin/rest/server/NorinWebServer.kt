@@ -3,9 +3,11 @@ package com.norin.rest.server
 import com.norin.rest.server.database.Database
 import com.norin.rest.server.database.entity.AccountTable
 import com.norin.rest.server.route.accountRoutes
+import com.norin.rest.server.route.guildMemberRoutes
 import com.norin.rest.server.route.guildRoutes
 import com.norin.rest.server.service.AccountDatabaseService
 import com.norin.rest.server.service.GuildDatabaseService
+import com.norin.rest.server.service.GuildMembersDatabaseService
 import io.ktor.application.*
 import io.ktor.features.*
 import io.ktor.http.*
@@ -51,5 +53,6 @@ fun Application.module() {
     routing {
         accountRoutes(environment.config, AccountDatabaseService())
         guildRoutes(environment.config, GuildDatabaseService())
+        guildMemberRoutes(environment.config, GuildMembersDatabaseService())
     }
 }

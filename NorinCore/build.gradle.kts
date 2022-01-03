@@ -1,6 +1,6 @@
 plugins {
     java
-    kotlin("jvm") version Dependencies.kotlinVersion
+    kotlin("jvm") version Dependencies.KotlinVersion
 }
 
 repositories {

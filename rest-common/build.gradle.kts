@@ -1,6 +1,6 @@
 plugins {
-    kotlin("multiplatform") version Dependencies.kotlinVersion
-    kotlin("plugin.serialization") version Dependencies.kotlinVersion
+    kotlin("multiplatform") version Dependencies.KotlinVersion
+    kotlin("plugin.serialization") version Dependencies.KotlinVersion
 }
 
 repositories {
@@ -19,8 +19,8 @@ kotlin {
             dependencies {
                 implementation(kotlin("stdlib-common"))
                 api("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.1")
-                api("io.ktor:ktor-client-core:${Dependencies.ktorVersion}")
-                api("io.ktor:ktor-serialization:${Dependencies.ktorVersion}")
+                api("io.ktor:ktor-client-core:${Dependencies.KtorVersion}")
+                api("io.ktor:ktor-serialization:${Dependencies.KtorVersion}")
             }
         }
         val commonTest by getting {

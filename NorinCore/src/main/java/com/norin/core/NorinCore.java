@@ -27,4 +27,8 @@ public class NorinCore extends JavaPlugin {
     public AccountService getAccountService() {
         return accountService;
     }
+
+    public static NorinCore getInstance() {
+        return NorinCore.getPlugin(NorinCore.class);
+    }
 }

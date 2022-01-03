@@ -51,7 +51,8 @@ public class GuildServiceImpl implements GuildService {
         guildRoute.updateGuild(guild.getId(), new GuildUpdateRequest(
                 guild.getName(),
                 guild.getTag(),
-                guild.getOwner().toString()
+                guild.getOwner().toString(),
+                guild.isFriendlyFireAllowed()
         ));
     }
 
