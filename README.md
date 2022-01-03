@@ -1,4 +1,4 @@
-# Norin
+# 🌱 Norin
 
 A test implementation of a Minecraft server using RESTful API taking advantage of the interoperability between Kotlin and Java.
 
